@@ -1,19 +1,21 @@
 #include "BluetoothSerial.h"
 
 BluetoothSerial SerialBT;
+
 const int motorAF = 32;
 const int motorAT = 18;
 const int motorBF = 19;
 const int motorBT = 21;
+
 void setup() {
   Serial.begin(115200);
-  SerialBT.begin("LENDA"); // Nome do dispositivo Bluetooth
-  Serial.println("O dispositivo Bluetooth está pronto para parear");
+  SerialBT.begin("LENDA");
+  Serial.println("Bluetooth pronto para parear");
 
-  pinMode(motorAF, OUTPUT); 
-  pinMode(motorAT, OUTPUT); 
-  pinMode(motorBF, OUTPUT); 
-  pinMode(motorBT, OUTPUT); 
+  pinMode(motorAF, OUTPUT);
+  pinMode(motorAT, OUTPUT);
+  pinMode(motorBF, OUTPUT);
+  pinMode(motorBT, OUTPUT);
 }
 
 void loop() {
@@ -32,7 +34,7 @@ void loop() {
         break;
       case 'D':
         direita();
-        break;         
+        break;
       default:
         pareCarro();
         break;
@@ -45,7 +47,6 @@ void frente() {
   digitalWrite(motorAT, LOW);
   digitalWrite(motorBF, HIGH);
   digitalWrite(motorBT, LOW);
-
 }
 
 void tras() {
@@ -53,11 +54,10 @@ void tras() {
   digitalWrite(motorAT, HIGH);
   digitalWrite(motorBF, LOW);
   digitalWrite(motorBT, HIGH);
-
 }
 
 void esquerda() {
-    digitalWrite(motorAF, HIGH);
+  digitalWrite(motorAF, HIGH);
   digitalWrite(motorAT, LOW);
   digitalWrite(motorBF, LOW);
   digitalWrite(motorBT, HIGH);
@@ -68,7 +68,6 @@ void direita() {
   digitalWrite(motorAT, HIGH);
   digitalWrite(motorBF, HIGH);
   digitalWrite(motorBT, LOW);
-
 }
 
 void pareCarro() {
@@ -76,5 +75,4 @@ void pareCarro() {
   digitalWrite(motorAT, LOW);
   digitalWrite(motorBF, LOW);
   digitalWrite(motorBT, LOW);
-
 }
